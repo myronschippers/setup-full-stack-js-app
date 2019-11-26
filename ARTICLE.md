@@ -34,7 +34,32 @@ We are going to us `create-react-app` to bootstrap our front-end application.
 1. Navigate to the place you want your project directory to live
 1. run: `npx create-react-app my-app-name`
     - `my-app-name` can be whatever you want it to be because it will be the name of your application and the name of the folder created that houses the application files
-1. Move 
+    - The base React application has it's own project structure
+    - ALl of the React JavaScript is located in the `src` directory
+1. run: `npm install express body-parser pg`
+    - this command will install `express`, `body-parser`, and `pg` dependencies for the node server
+1. Add a new file at the following path `./server/server.js`
+
+    ```JS
+    const express = require('express');
+    const bodyParser = require('body-parser');
+    
+    const app = express();
+    const PORT = process.env.PORT || 5000;
+
+    // SETUP MIDDLEWARE
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.json());
+
+    // API ROUTES
+
+    // KICKOFF SERVER
+    app.listen(PORT, () => {
+        console.log('Listening on port:', PORT);
+    });
+    ```
+
+    > Notes: there is a section left available for registering the API routes.
 
 
 ## Setting Up the Back-End
